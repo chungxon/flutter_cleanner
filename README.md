@@ -16,7 +16,20 @@ Shell script is used to deep clean a Flutter project
     - macos/Podfile.lock
     - macos/.symlinks
 
+# Installation
+
+- Place scripts in your root project directory
+
 # Usage
 
-- Place the script in your root project directory
-- Run the command `sh flutter_clean.sh` or `sh flutter_clean.sh false` to clean current directory
+## 1. Clean
+- Run the command `sh flutter_clean.sh` to deep clean current Flutter project, include all nested projects
+- Run the command `sh flutter_clean.sh false` to clean current Flutter project only
+
+## 2. Get
+- Run the command `sh flutter_get.sh` to get all Flutter projects
+- Run the command `sh flutter_get.sh true` to get all Flutter project and run
+  `pod install` after getting
+
+## 3. Reset
+- Run the command `sh flutter_reset.sh` to clean and then get all Flutter projects in your current directory
