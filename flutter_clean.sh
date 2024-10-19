@@ -80,7 +80,7 @@ deep_clean_flutter_project() {
     elapsed_time=$(echo "$end_time - $start_time" | bc)
 
     # Format elapsed time
-    formatted_time=$(printf "%.1f" "$elapsed_time")
+    formatted_time=$(printf "%.1fs" "$elapsed_time")
 
     if [ "$module_dir" == "." ]; then
         echo "${GREEN}Cleaned current directory in $formatted_time${RESET}"
