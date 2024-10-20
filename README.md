@@ -1,5 +1,7 @@
 # Flutter Cleaner Script
-Shell script is used to deep clean a Flutter project 
+Shell script is used to deep clean a Flutter project
+
+Another alternative to [Melos](https://pub.dev/packages/melos) or [Puby](https://pub.dev/packages/puby)
 
 # Features
 - [x] Scan all Flutter projects in your directory
