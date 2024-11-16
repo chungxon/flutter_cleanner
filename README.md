@@ -121,5 +121,9 @@ The scripts clean the following files and directories:
 - bash shell
 - CocoaPods (optional, for iOS development)
 
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
 ---
 <sub><sup>_This README was generated using Windsurf._</sup></sub>
