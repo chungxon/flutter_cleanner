@@ -7,6 +7,9 @@ set -e
 # Private code
 #------------------------------------------------------------------------------
 
+# Get the directory where the script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Color codes
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
@@ -29,17 +32,17 @@ print_banner() {
 help_function() {
     echo "Usage: $0 [options]"
     echo ""
-    echo "Reset Flutter project by cleaning and getting packages."
+    echo "Reset Flutter project(s) by cleaning and getting packages."
     echo ""
     echo "Options:"
-    echo "  -v, --verbose   Show detailed output"
-    echo "  -h, --help      Show this help message"
-    echo "  --version       Show version information"
+    echo "  -v, --verbose Show detailed output"
+    echo "  -h, --help    Show this help message"
+    echo "  --version     Show version information"
     echo ""
     echo "Examples:"
-    echo "  $0              # Reset Flutter project"
-    echo "  $0 -v          # Reset Flutter project with verbose output"
-    exit 1
+    echo "  $0          # Reset all Flutter projects"
+    echo "  $0 -v       # Reset with verbose output"
+    exit 0
 }
 
 # Error handling function
@@ -71,6 +74,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         -h|--help)
             help_function
+            exit 0
             ;;
         --version)
             echo "v${VERSION}"
@@ -79,6 +83,7 @@ while [[ $# -gt 0 ]]; do
         *)
             echo "${RED}Unknown option: $1${RESET}"
             help_function
+            exit 1
             ;;
     esac
 done
@@ -97,9 +102,9 @@ main() {
     # Clean project
     echo "▶ Step 1: Cleaning project..."
     if [ "$VERBOSE" = true ]; then
-        ./flutter_clean.sh -v || handle_error "Project cleaning failed"
+        "${SCRIPT_DIR}/flutter_clean.sh" -v || handle_error "Project cleaning failed"
     else
-        ./flutter_clean.sh || handle_error "Project cleaning failed"
+        "${SCRIPT_DIR}/flutter_clean.sh" || handle_error "Project cleaning failed"
     fi
     echo "${GREEN}✓ Project cleaned successfully${RESET}"
     echo ""
@@ -107,9 +112,9 @@ main() {
     # Get packages
     echo "▶ Step 2: Getting packages..."
     if [ "$VERBOSE" = true ]; then
-        ./flutter_get.sh -v || handle_error "Package installation failed"
+        "${SCRIPT_DIR}/flutter_get.sh" -v || handle_error "Package installation failed"
     else
-        ./flutter_get.sh || handle_error "Package installation failed"
+        "${SCRIPT_DIR}/flutter_get.sh" || handle_error "Package installation failed"
     fi
     echo "${GREEN}✓ Packages installed successfully${RESET}"
     echo ""

@@ -121,6 +121,28 @@ The scripts clean the following files and directories:
 - bash shell
 - CocoaPods (optional, for iOS development)
 
+## Testing
+
+The project includes a comprehensive test suite using [Bash Automated Testing System (BATS)](https://github.com/bats-core/bats-core). To run the tests:
+
+1. Install BATS:
+   ```bash
+   brew install bats-core
+   ```
+
+2. Run the test suite:
+   ```bash
+   cd tests
+   bats *.bats
+   ```
+
+The test suite includes:
+- Unit tests for all scripts
+- Mock Flutter project environment
+- Command-line argument testing
+- Error handling verification
+- Output format validation
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

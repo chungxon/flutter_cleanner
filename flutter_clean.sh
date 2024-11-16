@@ -39,7 +39,7 @@ help_function() {
     echo "  $0                   # Deep clean all Flutter projects"
     echo "  $0 -d false          # Clean only the current Flutter project"
     echo "  $0 -d true -v        # Deep clean all projects with verbose output"
-    exit 1
+    exit 0
 }
 
 # Error handling function
@@ -151,6 +151,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         -h|--help)
             help_function
+            exit 0
             ;;
         --version)
             echo "v${VERSION}"
@@ -159,6 +160,7 @@ while [[ $# -gt 0 ]]; do
         *)
             echo "${RED}Unknown option: $1${RESET}"
             help_function
+            exit 1
             ;;
     esac
 done
@@ -223,7 +225,6 @@ deep_clean_flutter_project() {
             
             # Return to the root directory after cleaning
             cd - > /dev/null 2>&1
-
         else
             echo "${YELLOW}Warning: Could not access directory $module_dir, skipping...${RESET}"
             echo

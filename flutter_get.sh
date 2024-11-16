@@ -27,19 +27,19 @@ print_banner() {
 help_function() {
     echo "Usage: $0 [options]"
     echo ""
-    echo "Get Flutter dependencies for project(s)."
+    echo "Get packages for Flutter project(s)."
     echo ""
     echo "Options:"
-    echo "  -p, --pod       Run 'pod install' for iOS after getting packages (default: false)"
-    echo "  -v, --verbose   Show detailed output"
-    echo "  -h, --help      Show this help message"
-    echo "  --version       Show version information"
+    echo "  -p, --pod     Run 'pod install' for iOS after getting packages"
+    echo "  -v, --verbose Show detailed output"
+    echo "  -h, --help    Show this help message"
+    echo "  --version     Show version information"
     echo ""
     echo "Examples:"
     echo "  $0                    # Get packages for all Flutter projects"
     echo "  $0 -p                 # Get packages and run pod install"
     echo "  $0 -p -v              # Get packages and run pod install with verbose output"
-    exit 1
+    exit 0
 }
 
 # Error handling function
@@ -120,6 +120,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         -h|--help)
             help_function
+            exit 0
             ;;
         --version)
             echo "v${VERSION}"
@@ -128,6 +129,7 @@ while [[ $# -gt 0 ]]; do
         *)
             echo "${RED}Unknown option: $1${RESET}"
             help_function
+            exit 1
             ;;
     esac
 done
